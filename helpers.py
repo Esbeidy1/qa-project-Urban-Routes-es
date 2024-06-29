@@ -32,7 +32,7 @@ def retrieve_phone_code(driver) -> str:
 
 
 def wait_for_taxi_request_button(self):
-    WebDriverWait(self.driver, 5).until(expected_conditions.element_to_be_clickable(self.UrbanRoutesPage.taxi_request_button))
+    WebDriverWait(self.driver, 5).until(expected_conditions.element_to_be_clickable(self.wait.taxi_request_button))
 
 
 def wait_for_reserve_button(self):
@@ -47,5 +47,5 @@ def standard_wait_time(self):
 
 def wait_for_countdown_to_finish(self):
     # Esperar a que el timer el pedido llegue a "0".
-    WebDriverWait(self.driver, 20).until(expected_conditions.visibility_of_element_located(self.UrbanRoutesPage.taxi_driver_is_selected))
+    WebDriverWait(self.driver, 20).until(expected_conditions.visibility_of_element_located(self.taxi_driver_is_selected))
 

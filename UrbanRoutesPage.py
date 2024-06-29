@@ -90,7 +90,7 @@ class UrbanRoutesPage:
     def get_to(self):
         return self.driver.find_element(*self.to_field).get_property('value')
 
-    def test_taxi_request_button(self):
+    def click_taxi_request_button(self):
         # Hacer Clic en el botón "Pedir un taxi".
         self.driver.find_element(*self.taxi_request_button).click()
 
@@ -184,5 +184,5 @@ class UrbanRoutesPage:
         taxi_driver_is_selected = elemento.is_displayed()
         return taxi_driver_is_selected
 
-    def click_taxi_request_button(self):
-        pass
+  #  def click_taxi_request_button(self):
+   #     pass
