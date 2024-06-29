@@ -51,7 +51,7 @@ class TestUrbanRoutes:
     def test_phone_number(self):
         routes_page = UrbanRoutesPage(self.driver)
         phone_number = data.phone_number
-        # Código SMS
+        # Enviar Código SMS
         routes_page.fill_phone_number()
         helpers.standard_wait_time()
         assert routes_page.text_in_phone_number_box == phone_number

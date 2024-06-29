@@ -91,7 +91,7 @@ class UrbanRoutesPage:
         return self.driver.find_element(*self.to_field).get_property('value')
 
     def click_taxi_request_button(self):
-        # Hacer Clic en el botón "Pedir un taxi".
+        # Hacer Clic en el botón "Pedir un taxi"..
         self.driver.find_element(*self.taxi_request_button).click()
 
     def click_comfort_category(self):
