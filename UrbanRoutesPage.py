@@ -4,14 +4,15 @@ from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
-
+import time
 
 class UrbanRoutesPage:
     from_field = (By.ID, 'from')
     to_field = (By.ID, 'to')
 
     # atributo para hacer click en botón "Pedir un Taxi"
-    taxi_request_button = (By.CLASS_NAME, 'round button')
+    #taxi_request_button = (By.CLASS_NAME, 'round button')
+    taxi_request_button = (By.XPATH, '// *[ @ id = "root"] / div / div[3] / div[3] / div[1] / div[3] / div[1] / button')
 
     # atributo para espera después de hacer click en "Pedir un Taxi"
     reserved_button = (By.XPATH, '//*[@id="root"]/div/div[3]/div[4]/button')
@@ -20,11 +21,11 @@ class UrbanRoutesPage:
     comfort_category = (By.CSS_SELECTOR, '#root > div > div.workflow > div.workflow-subcontainer >'
                                          'div.tariff-picker.shown > div.tariff-cards > div.tcard.active')
 
-    # atributo para insertar numero de teléfono
+    # Atributos para poner el número telefónico:
     phone_number_box = (By.CLASS_NAME, 'np-button')
     text_in_phone_number_box = (By.CLASS_NAME, 'np-text')
-    input_phone_number_container = (By.CSS_SELECTOR, '#root > div > div.number-picker.open > div.modal >'
-                                                     'div.section.active > form > div.np-input > div')
+    input_phone_number_container = (By.CSS_SELECTOR,
+                                    '#root > div > div.number-picker.open > div.modal > div.section.active > form > div.np-input > div')
     sms_input_box = (By.CLASS_NAME, 'input-container')
     sms_confirmation_button = (By.CLASS_NAME, 'button full')
 
@@ -46,9 +47,8 @@ class UrbanRoutesPage:
     message_for_driver_text = (By.ID, 'comment')
 
     # atributos para seleccionar opción Pedir una manta y pañuelos:
-    blanket_selector = (
-        By.CSS_SELECTOR, '#root > div > div.workflow > div.workflow-subcontainer > div.tariff-picker.shown >'
-                         'div.form > div.reqs.open > div.reqs-body > div:nth-child(1) > div > div.r-sw > div > span')
+    blanket_selector = (By.XPATH, '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[2]/div[4]/div[2]/div[1]/div/div[2]/div/span/ button')
+
     blanket_value = (
         By.CSS_SELECTOR, '#root > div > div.workflow > div.workflow-subcontainer > div.tariff-picker.shown >'
                          'div.form > div.reqs.open > div.reqs-body > div:nth-child(1) > div > div.r-sw > div > input')
@@ -67,7 +67,7 @@ class UrbanRoutesPage:
                          'div > div.r-counter > div > div.counter-value')
 
     # Atributos para esperar a que la información del conductor en el modal aparezca:
-    button_find_taxi = (By.CSS_SELECTOR, '#root > div > div.workflow > div.smart-button-wrapper > button')
+    button_find_taxi = (By.XPATH, '//*[@id="root"]/div/div[3]/div[4]/button')
     taxi_driver_is_selected = (By.CSS_SELECTOR, 'order-button')
     header_order_title = (By.CLASS_NAME, 'order-header-title')
 
@@ -101,18 +101,21 @@ class UrbanRoutesPage:
     def fill_phone_number(self):
         # Rellena el número de teléfono.
         self.driver.find_element(*self.phone_number_box).click()
-        helpers.standard_wait_time(self)
+        time.sleep(3)
+        #helpers.standard_wait_time(self)
         # Clic en el campo para introducir el número de teléfono
         self.driver.find_element(*self.input_phone_number_container).click()
         # Introduce el número de teléfono en el campo
         self.driver.find_element(*self.input_phone_number_container).send_keys(data.phone_number)
         # Hacer clic en el botón "Siguiente" de la ventana "Introduce tu número"
         self.driver.find_element(By.CLASS_NAME, 'button full').click()
-        helpers.standard_wait_time(self)
+        time.sleep(3)
+        #helpers.standard_wait_time(self)
         # Colocar el código SMS
         self.driver.find_element(*self.sms_input_box).click()
         self.driver.find_element(*self.sms_input_box).send_keys(helpers.retrieve_phone_code())
-        helpers.standard_wait_time(self)
+        time.sleep(3)
+        #helpers.standard_wait_time(self)
         self.driver.find_element(*self.sms_confirmation_button).click()
 
     def set_steps_payment_method(self, number_card, code_card):
@@ -130,6 +133,11 @@ class UrbanRoutesPage:
         WebDriverWait(self.driver, 3).until(expected_conditions.element_to_be_clickable(self.button_agree_card))
         # Hacer clic para guardar la tarjeta nueva
         self.driver.find_element(*self.button_agree_card).click()
+
+
+
+
+
 
     def click_close_pop_up_card_windows(self):
         # Clic para cerrar la ventana emergente del número de teléfono

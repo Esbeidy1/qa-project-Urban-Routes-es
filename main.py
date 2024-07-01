@@ -34,12 +34,10 @@ class TestUrbanRoutes:
 
     def test_taxi_request(self):
         routes_page = UrbanRoutesPage(self.driver)
-        #routes_page.set_from(data.address_from)
-        #routes_page.set_to(data.address_to)
-        time.sleep(5)
+        time.sleep(3)
         #helpers.wait_for_taxi_request_button(helpers.wait_for_taxi_request_button(self))
-        routes_page.click_taxi_request_button(UrbanRoutesPage(*self.taxi_request_button))
-        time.sleep(5)
+        routes_page.click_taxi_request_button()
+        time.sleep(3)
         #helpers.wait_for_reserve_button(helpers.wait_for_taxi_request_button(self))
         assert True, expected_conditions.visibility_of_element_located((By.CLASS_NAME, 'np-button'))
 
@@ -53,8 +51,9 @@ class TestUrbanRoutes:
         phone_number = data.phone_number
         # Enviar Código SMS
         routes_page.fill_phone_number()
-        helpers.standard_wait_time()
+        time.sleep(5)
         assert routes_page.text_in_phone_number_box == phone_number
+
 
     def test_add_card(self):
         routes_page = UrbanRoutesPage(self.driver)
@@ -96,7 +95,8 @@ class TestUrbanRoutes:
     def test_check_show_name_driver_modal(self):
         # Crea una instancia de UrbanRoutesPage y pasa el driver como argumento.
         routes_page = UrbanRoutesPage(self.driver)
-        helpers.wait_for_countdown_to_finish()
+        time.sleep(3)
+        #helpers.wait_for_countdown_to_finish()
         assert True, routes_page.check_taxi_driver_is_selected()
 
     @classmethod
