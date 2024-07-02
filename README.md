@@ -1,17 +1,17 @@
-#Proyecto Urban Routes
+Proyecto Urban Routes
 
 Este proyecto fue desarrollado como parte del octavo sprint del bootcamp de QA de TripleTen. El objetivo es automatizar el proceso de solicitar un taxi en la aplicación, cubriendo desde el inicio de la solicitud hasta la confirmación de la misma.
 
-#Descripción del Proyecto
+Descripción del Proyecto
 El proyecto se enfoca en la automatización del flujo completo de solicitar un taxi utilizando el método POM (Page Object Model). Esto incluye definir los localizadores necesarios, implementar los métodos requeridos y ejecutar las pruebas. 
 
-#Tecnologías Utilizadas
+Tecnologías Utilizadas
   * Python
   * Pytest
   * Selenium
 
 
-##Pruebas Automatizadas
+Pruebas Automatizadas
 Se han automatizado las siguientes pruebas:
   1. Insertar la Dirección: Verificar la funcionalidad de inserta la dirección de recogida.
   2. Seleccionar la Tarifa Comfort: Validar la selección de la tarifa Comfort.
@@ -23,5 +23,5 @@ Se han automatizado las siguientes pruebas:
   8. Aparición del Modal para Buscar un Taxi: Validar la aparición del modal para buscar un taxi.
   9. Esperar Información del Conductor en el Modal: Probar la espera hasta que aparezca la información del conductor en el modal.
 
-#Resultados de las Pruebas
+Resultados de las Pruebas
 Todas las pruebas se ejecutaron de manera exitosa.
