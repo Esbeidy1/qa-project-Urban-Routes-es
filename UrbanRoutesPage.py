@@ -1,5 +1,5 @@
 import time
-
+from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 
@@ -61,6 +61,7 @@ class UrbanRoutesPage:
         self.driver.find_element(*self.to_field).send_keys(to_address)
 
     def set_route(self, from_address, to_address):
+        time.sleep(3)
         self.set_from(from_address)
         self.set_to(to_address)
 
@@ -170,5 +171,6 @@ class UrbanRoutesPage:
         elemento = self.driver.find_element(*self.taxi_driver_is_selected)
         taxi_driver_is_selected = elemento.is_displayed()
         return taxi_driver_is_selected
+
 
 
