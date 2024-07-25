@@ -25,3 +25,6 @@ Se han automatizado las siguientes pruebas:
 
 Resultados de las Pruebas
 Todas las pruebas se ejecutaron de manera exitosa.
+
+Para ejecutar las pruebas, se usa el siguiente comando:
+pytest main.py
