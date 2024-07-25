@@ -103,7 +103,6 @@ class TestUrbanRoutes:
         routes_page = UrbanRoutesPage(self.driver)
         WebDriverWait(self.driver, 35).until(expected_conditions.element_to_be_clickable(
             (By.CSS_SELECTOR, 'order-button')))
-        #time.sleep(35)
         assert True, routes_page.check_taxi_driver_is_selected()
 
     @classmethod
